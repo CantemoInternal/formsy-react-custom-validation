@@ -37,7 +37,8 @@
   },
   "dependencies": {
     "form-data-to-object": "^0.2.0",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "yarn": "^1.21.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

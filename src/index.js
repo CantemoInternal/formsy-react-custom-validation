@@ -55,9 +55,11 @@ class Formsy extends React.Component {
   getCurrentValues = () => (
     this.inputs.reduce((data, component) => {
       const { name } = component.props;
-      const dataCopy = Object.assign({}, data); // avoid param reassignment
-      dataCopy[name] = component.state.value;
-      return dataCopy;
+      // Removing Object.assign makes this much faster.
+      // It's basically a fix someone suggested on Formsy's git page which they agnowledged it was a mistake
+      // const dataCopy = Object.assign({}, data); // avoid param reassignment
+      data[name] = component.state.value;
+      return data;
     }, {})
   )
 
@@ -69,9 +71,11 @@ class Formsy extends React.Component {
   getPristineValues = () => (
     this.inputs.reduce((data, component) => {
       const { name } = component.props;
-      const dataCopy = Object.assign({}, data); // avoid param reassignment
-      dataCopy[name] = component.props.value;
-      return dataCopy;
+      // Removing Object.assign makes this much faster.
+      // It's basically a fix someone suggested on Formsy's git page which they agnowledged it was a mistake
+      // const dataCopy = Object.assign({}, data); // avoid param reassignment
+      data[name] = component.props.value;
+      return data;
     }, {})
   )
 

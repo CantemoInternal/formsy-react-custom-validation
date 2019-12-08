@@ -23,9 +23,11 @@ const convertValidationsToObject = (validations) => {
       }
 
       // Avoid parameter reassignment
-      const validationsAccumulatorCopy = Object.assign({}, validationsAccumulator);
-      validationsAccumulatorCopy[validateMethod] = args.length ? args[0] : true;
-      return validationsAccumulatorCopy;
+      // const validationsAccumulatorCopy = Object.assign({}, validationsAccumulator);
+      // Removing Object.assign makes this much faster.
+      // It's basically a fix someone suggested on Formsy's git page which they agnowledged it was a mistake
+      validationsAccumulator[validateMethod] = args.length ? args[0] : true;
+      return validationsAccumulator;
     }, {});
   }
 
